@@ -1,0 +1,460 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Assignment 3 Weigelt Corporation},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{Assignment 3 Weigelt Corporation}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+\hypertarget{question}{%
+\subsection{Question:}\label{question}}
+
+The WeigeltCorporation has three branch plants with excess production
+capacity. Fortunately, the corporation has a new product ready to begin
+production, and all three plants have this capability, so some of the
+excess capacity can be used in this way. This product can be made in
+three sizes--large, medium, and small--that yield a net unit profit of
+\$420, \$360, and \$300, respectively. Plants 1, 2, and 3 have the
+excess capacity to produce 750, 900, and 450 units per day of this
+product, respectively, regardless of the size or combination of sizes
+involved.
+
+The amount of available in-process storage space also imposes a
+limitation on the production rates of the new product. Plants 1, 2, and
+3 have 13,000, 12,000, and 5,000 square feet, respectively, of
+in-process storage space available for a day's production of this
+product. Each unit of the large, medium, and small sizes produced per
+day requires 20, 15, and 12 square feet, respectively.
+
+Sales forecasts indicate that if available, 900, 1,200, and 750 units of
+the large, medium, and small sizes, respectively, would be sold per day.
+
+At each plant, some employees will need to be laid off unless most of
+the plant's excess production capacity can be used to produce the new
+product. To avoid layoffs if possible, management has decided that the
+plants should use the same percentage of their excess capacity to
+produce the new product.
+
+Management wishes to know how much of each of the sizes should be
+produced by each of the plants to maximize profit.
+
+1.Solve the problem usinglpsolve, or any other equivalent library in R.
+
+2.Identify the shadow prices, dual solution, and reduced costs
+
+3.Further, identify the sensitivity of the above prices and costs. That
+is, specify the range of shadow prices and reduced cost within which the
+optimal solution will not change.
+
+4.Formulate the dual of the above problem and solve it. Does the
+solution agree with what you observed for the primal problem?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(}\StringTok{\textquotesingle{}lpSolveAPI\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'lpSolveAPI' was built under R version 4.1.1
+\end{verbatim}
+
+\hypertarget{to-read-the-lp-file.}{%
+\subsection{To read the LP file.}\label{to-read-the-lp-file.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{WC }\OtherTok{\textless{}{-}} \FunctionTok{read.lp}\NormalTok{(}\StringTok{"Weigelt.lp"}\NormalTok{)}
+
+\NormalTok{WC}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Model name: 
+##   a linear program with 9 decision variables and 11 constraints
+\end{verbatim}
+
+\#\#To solve the LP.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{solve}\NormalTok{(WC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\#\#To compute the objective function value.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.objective}\NormalTok{(WC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 696000
+\end{verbatim}
+
+\#\#To compute the values of decision variables.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.variables}\NormalTok{(WC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 516.6667 177.7778   0.0000   0.0000 666.6667 166.6667   0.0000   0.0000
+## [9] 416.6667
+\end{verbatim}
+
+\#\#To compute the values of constraints.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.constraints}\NormalTok{(WC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  6.944444e+02  8.333333e+02  4.166667e+02  1.300000e+04  1.200000e+04
+##  [6]  5.000000e+03  5.166667e+02  8.444444e+02  5.833333e+02 -2.037268e-10
+## [11]  0.000000e+00
+\end{verbatim}
+
+\#\#To compute Shadow price
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC)}\SpecialCharTok{$}\NormalTok{duals[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{11}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  0.00  0.00  0.00 12.00 20.00 60.00  0.00  0.00  0.00 -0.08  0.56
+\end{verbatim}
+
+\#\#To compute Reduced cost.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC)}\SpecialCharTok{$}\NormalTok{duals[}\DecValTok{12}\SpecialCharTok{:}\DecValTok{20}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]    0    0  -24  -40    0    0 -360 -120    0
+\end{verbatim}
+
+\#\#To compute the dual solution
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.dual.solution}\NormalTok{(WC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]    1.00    0.00    0.00    0.00   12.00   20.00   60.00    0.00    0.00
+## [10]    0.00   -0.08    0.56    0.00    0.00  -24.00  -40.00    0.00    0.00
+## [19] -360.00 -120.00    0.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $duals
+##  [1]    0.00    0.00    0.00   12.00   20.00   60.00    0.00    0.00    0.00
+## [10]   -0.08    0.56    0.00    0.00  -24.00  -40.00    0.00    0.00 -360.00
+## [19] -120.00    0.00
+## 
+## $dualsfrom
+##  [1] -1.000000e+30 -1.000000e+30 -1.000000e+30  1.122222e+04  1.150000e+04
+##  [6]  4.800000e+03 -1.000000e+30 -1.000000e+30 -1.000000e+30 -2.500000e+04
+## [11] -1.250000e+04 -1.000000e+30 -1.000000e+30 -2.222222e+02 -1.000000e+02
+## [16] -1.000000e+30 -1.000000e+30 -2.000000e+01 -4.444444e+01 -1.000000e+30
+## 
+## $dualstill
+##  [1] 1.000000e+30 1.000000e+30 1.000000e+30 1.388889e+04 1.250000e+04
+##  [6] 5.181818e+03 1.000000e+30 1.000000e+30 1.000000e+30 2.500000e+04
+## [11] 1.250000e+04 1.000000e+30 1.000000e+30 1.111111e+02 1.000000e+02
+## [16] 1.000000e+30 1.000000e+30 2.500000e+01 6.666667e+01 1.000000e+30
+\end{verbatim}
+
+\#\#To compute the range of shadow price for which the optimal solution
+remains unchanged.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cbind}\NormalTok{(}\AttributeTok{Shadow\_Price=}\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC)}\SpecialCharTok{$}\NormalTok{duals[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{11}\NormalTok{], }\AttributeTok{Lower\_bound=}\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC)}\SpecialCharTok{$}\NormalTok{dualsfrom[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{11}\NormalTok{], }\AttributeTok{Upper\_bound=}\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC)}\SpecialCharTok{$}\NormalTok{dualstill[}\DecValTok{1}\SpecialCharTok{:}\DecValTok{11}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Shadow_Price   Lower_bound  Upper_bound
+##  [1,]         0.00 -1.000000e+30 1.000000e+30
+##  [2,]         0.00 -1.000000e+30 1.000000e+30
+##  [3,]         0.00 -1.000000e+30 1.000000e+30
+##  [4,]        12.00  1.122222e+04 1.388889e+04
+##  [5,]        20.00  1.150000e+04 1.250000e+04
+##  [6,]        60.00  4.800000e+03 5.181818e+03
+##  [7,]         0.00 -1.000000e+30 1.000000e+30
+##  [8,]         0.00 -1.000000e+30 1.000000e+30
+##  [9,]         0.00 -1.000000e+30 1.000000e+30
+## [10,]        -0.08 -2.500000e+04 2.500000e+04
+## [11,]         0.56 -1.250000e+04 1.250000e+04
+\end{verbatim}
+
+\#\#To compute the range of shadow price for which the optimal solution
+remains unchanged.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cbind}\NormalTok{(}\AttributeTok{Reduced\_Cost=}\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC)}\SpecialCharTok{$}\NormalTok{duals[}\DecValTok{12}\SpecialCharTok{:}\DecValTok{20}\NormalTok{], }\AttributeTok{Lower\_bound=}\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC)}\SpecialCharTok{$}\NormalTok{dualsfrom[}\DecValTok{12}\SpecialCharTok{:}\DecValTok{20}\NormalTok{], }\AttributeTok{Upper\_bound=}\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC)}\SpecialCharTok{$}\NormalTok{dualstill[}\DecValTok{12}\SpecialCharTok{:}\DecValTok{20}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##       Reduced_Cost   Lower_bound  Upper_bound
+##  [1,]            0 -1.000000e+30 1.000000e+30
+##  [2,]            0 -1.000000e+30 1.000000e+30
+##  [3,]          -24 -2.222222e+02 1.111111e+02
+##  [4,]          -40 -1.000000e+02 1.000000e+02
+##  [5,]            0 -1.000000e+30 1.000000e+30
+##  [6,]            0 -1.000000e+30 1.000000e+30
+##  [7,]         -360 -2.000000e+01 2.500000e+01
+##  [8,]         -120 -4.444444e+01 6.666667e+01
+##  [9,]            0 -1.000000e+30 1.000000e+30
+\end{verbatim}
+
+\#\#The Dual of the Weiglt Coporation problem: Objective function:
+
+minz = 750 y1 + 900 y2 + 450 y3 + 13000 y4 + 12000 y5 + 5000 y6 + 900 y7
++ 1200 y8 + 750 y9;
+
+Subject to
+
+y1 + 20 y4 + y7 + 900 y10 + 450 y11 \textgreater= 420;
+
+y1 + 15 y4 + y8 + 900 y10 + 450 y11 \textgreater= 360;
+
+y1 + 12 y4 + y9 + 900 y10 + 450 y11 \textgreater= 300;
+
+y2 + 20 y5 + y7 - 750 y10 \textgreater= 420;
+
+y2 + 15 y5 + y8 - 750 y10 \textgreater= 360;
+
+y2 + 12 y5 + y9 - 750 y10 \textgreater= 300;
+
+y3 + 20 y6 + y7 - 750 y11 \textgreater= 420;
+
+y3 + 15 y6 + y8 - 750 y11 \textgreater= 360;
+
+y3 + 12 y6 + y9 - 750 y11 \textgreater= 300;
+
+And
+
+y1, y2, \ldots, y9 \textgreater= 0;
+
+y10, y11 unrestricted;
+
+Thus, Lets replace y10 = y10\_1 - y10\_2 and y11 = y11\_1 - y11\_2,
+where y10\_1, y10\_2, y11\_1, y11\_2 \textgreater=0;
+
+\#\#To solve the dual of the Weight\_Corporation
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{WC\_Dual }\OtherTok{\textless{}{-}} \FunctionTok{read.lp}\NormalTok{(}\StringTok{"Dual\_weigelt.lp"}\NormalTok{)}
+
+\FunctionTok{set.bounds}\NormalTok{(WC\_Dual, }\AttributeTok{lower =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{,}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{,}\SpecialCharTok{{-}}\ConstantTok{Inf}\NormalTok{), }\AttributeTok{upper =} \FunctionTok{rep}\NormalTok{(}\ConstantTok{Inf}\NormalTok{,}\DecValTok{11}\NormalTok{))}
+
+\FunctionTok{solve}\NormalTok{(WC\_Dual)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.objective}\NormalTok{(WC\_Dual)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 696000
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.constraints}\NormalTok{(WC\_Dual)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 420 360 324 460 360 300 780 480 300
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.variables}\NormalTok{(WC\_Dual)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  0.00  0.00  0.00 12.00 20.00 60.00  0.00  0.00  0.00 -0.08  0.56
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.sensitivity.rhs}\NormalTok{(WC\_Dual)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $duals
+##  [1] 516.66667 177.77778   0.00000   0.00000 666.66667 166.66667   0.00000
+##  [8]   0.00000 416.66667  55.55556  66.66667  33.33333   0.00000   0.00000
+## [15]   0.00000 383.33333 355.55556 166.66667   0.00000   0.00000
+## 
+## $dualsfrom
+##  [1]  3.600000e+02  3.450000e+02 -1.000000e+30 -1.000000e+30  3.450000e+02
+##  [6]  2.880000e+02 -1.000000e+30 -1.000000e+30  2.040000e+02 -1.000000e+30
+## [11] -2.605325e+13 -1.000000e+30 -1.000000e+30 -1.000000e+30 -1.000000e+30
+## [16] -4.000000e+01 -1.500000e+01 -2.400000e+01 -1.000000e+30 -1.000000e+30
+## 
+## $dualstill
+##  [1] 4.60e+02 4.20e+02 1.00e+30 1.00e+30 3.75e+02 3.24e+02 1.00e+30 1.00e+30
+##  [9] 1.00e+30 2.52e+02 6.00e+01 4.80e+02 1.00e+30 1.00e+30 1.00e+30 6.00e+01
+## [17] 1.50e+01 1.20e+01 1.00e+30 1.00e+30
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{get.dual.solution}\NormalTok{(WC\_Dual)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]   1.00000 516.66667 177.77778   0.00000   0.00000 666.66667 166.66667
+##  [8]   0.00000   0.00000 416.66667  55.55556  66.66667  33.33333   0.00000
+## [15]   0.00000   0.00000 383.33333 355.55556 166.66667   0.00000   0.00000
+\end{verbatim}
+
+\#\#Thus we can see that the Optimal Solution value is same for both
+primal and dual problem.
+
+\end{document}
