@@ -1,0 +1,103 @@
+---
+title: "Assignment 4"
+output:
+  word_document: default
+  html_document: default
+  pdf_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(warning  = FALSE)
+knitr::opts_chunk$set( message = FALSE)
+```
+
+## Question 1:
+Heart Start produces automated external defibrillators (AEDs) in each of two different plants (A and B). The unit production costs and monthly production capacity of the two plants are indicated in the table below. The AEDs are sold through three wholesalers. The shipping cost from each plant to the warehouse of each wholesaler along with the monthly demand from each wholesaler are also indicated in the table. How many AEDs should be produced in each plant, and how should they be distributed to each of the three wholesaler warehouses so as to minimize the combined cost of production and shipping?
+
+        Unit Shipping Cost                        Unit                Monthly
+        Warehouse 1   Warehouse 2   Warehouse 3   ProductionCost      ProductionCapacity
+        
+Plant A   $22           $14           $30           $600                100
+
+Plant B   $16           $20           $24           $625                120
+
+<hr/>
+Monthly   80            60            70
+Demand
+```{r}
+library('lpSolveAPI')
+```
+
+## To read the LP file.
+
+```{r}
+HeartStart <- read.lp("HeartStart.lp");
+
+HeartStart
+```
+##To solve the LP.
+```{r}
+solve(HeartStart)
+```
+##To compute the objective function value.
+```{r}
+get.objective(HeartStart)
+```
+##To compute the values of decision variables.
+```{r}
+get.variables(HeartStart)
+```
+##To compute the values of constraints.
+```{r}
+get.constraints(HeartStart)
+```
+
+##Question 2:
+Oil Distribution TexxonOil Distributors, Inc., has three active oil wells in a west Texas oil field. Well 1 has a capacity of 93 thousand barrels per day (TBD), Well 2 can produce 88 TBD, and Well 3 can produce 95 TBD. The company has five refineries along the Gulf Coast, all of which have been operating at stable demand levels. In addition, three pump stations have been built to move the oil along the pipelines from the wells to the refineries. Oil can flow from any one of the wells to any of the pump stations, and from any oneof the pump stations to any of the refineries, and Texxon is looking for a minimum cost schedule. The refineries' requirements are as follows.
+
+
+
+Refinery            R1    R2    R3    R4    R5
+Requirement (TBD)   30    57    48    91    48
+
+The company's cost accounting system recognizes charges by the segment of pipeline that is used. These daily costs are given in the tables below, in dollars per thou-sand barrels.
+
+![](K:\ANACONDA\R\QMM\qmm\QMM1\64018-ksharm11\QMM_ASSIGNMENT4\Capture.PNG)
+
+1)What is the minimum cost of providing oil to the refineries? Which wells are used to capacity in the optimal schedule? Formulation of the problem is enough.
+
+2)Showthenetworkdiagramcorrespondingtothesolutionin(a).Thatis,labeleachof the arcs in the solution and verify that the flows are consistent with the given information.
+
+##To read the LP file.
+
+```{r}
+OilRefineries <- read.lp("OilRefineries.lp");
+
+OilRefineries
+```
+##To solve the LP.
+
+```{r}
+solve(OilRefineries)
+
+```
+##To compute the objective function value.
+##Minimal Optimal solution
+
+```{r}
+get.objective(OilRefineries)
+
+```
+##To compute the values of decision variables.
+
+```{r}
+get.variables(OilRefineries)
+
+```
+##To compute the values of constraints.
+```{r}
+get.constraints(OilRefineries)
+
+```
+##The Well 2 will obtain us the optimal solution for the transportation problem.
