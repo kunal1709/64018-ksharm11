@@ -1,0 +1,406 @@
+---
+title: "ksharm11_Assignment5__Question1_AND_2"
+author: "Kunal Sharma"
+date: "07/11/2021"
+output:
+  html_document:
+    df_print: paged
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(warning  = FALSE)
+knitr::opts_chunk$set( message = FALSE)
+```
+1.The Hope Valley Health Care Association owns and operates six nursing homes in adjoining states. An evaluation of their efficiency has been undertaken using two inputs and two outputs. The inputs are staffing labor (measured in average hours per day) and the cost of supplies (in thousands of dollars per day). The outputs are the number of patient-days reimbursed by third-party sources and the number of patient-days reimbursed privately. A summary of performance data is shown in the table below.
+
+![](K:\ANACONDA\R\QMM\qmm\QMM1\64018-ksharm11\QMM_ASSIGNMENT5\Capture1.PNG)
+
+Questions
+
+1)Formulate and perform DEA analysis under all DEA assumptions of FDH, CRS, VRS, IRS, DRS, and FRH.
+
+2)Determine the Peers and Lambdas under each of the above assumptions
+
+3)Summarize your results in a tabular format
+
+4)Compare and contrast the above results
+
+```{r}
+library(lpSolveAPI)
+
+```
+
+```{r}
+DMU_Facility_1 <- read.lp("DMU_Facility_1.lp")
+solve(DMU_Facility_1)
+```
+
+```{r}
+get.objective(DMU_Facility_1)
+```
+
+```{r}
+get.constraints(DMU_Facility_1)
+```
+
+```{r}
+get.variables(DMU_Facility_1)
+
+```
+#The solution for the this DMU gives us an optimal solution.
+
+```{r}
+DMU_Facility_2 <- read.lp("DMU_Facility_2.lp")
+solve(DMU_Facility_2)
+```
+
+```{r}
+get.objective(DMU_Facility_2)
+```
+
+```{r}
+get.constraints(DMU_Facility_2)
+```
+
+```{r}
+get.variables(DMU_Facility_2)
+
+```
+#The solution for the this DMU gives us an optimal solution.
+
+
+```{r}
+DMU_Facility_3 <- read.lp("DMU_Facility_3.lp")
+solve(DMU_Facility_3)
+```
+
+```{r}
+get.objective(DMU_Facility_3)
+```
+
+```{r}
+get.constraints(DMU_Facility_3)
+```
+
+```{r}
+get.variables(DMU_Facility_3)
+
+```
+#The solution for the this DMU gives us an optimal solution.
+
+
+```{r}
+DMU_Facility_4 <- read.lp("DMU_Facility_4.lp")
+solve(DMU_Facility_4)
+```
+
+```{r}
+get.objective(DMU_Facility_4)
+```
+
+```{r}
+get.constraints(DMU_Facility_4)
+```
+
+```{r}
+get.variables(DMU_Facility_4)
+
+```
+#The solution for the this DMU gives us an optimal solution.
+
+
+```{r}
+DMU_Facility_5 <- read.lp("DMU_Facility_5.lp")
+solve(DMU_Facility_5)
+```
+
+```{r}
+get.objective(DMU_Facility_5)
+```
+
+```{r}
+get.constraints(DMU_Facility_5)
+```
+
+```{r}
+get.variables(DMU_Facility_5)
+
+```
+#The solution for the this DMU gives us an optimal solution.
+
+
+```{r}
+DMU_Facility_6 <- read.lp("DMU_Facility_6.lp")
+solve(DMU_Facility_6)
+```
+
+```{r}
+get.objective(DMU_Facility_6)
+```
+
+```{r}
+get.constraints(DMU_Facility_6)
+```
+
+```{r}
+get.variables(DMU_Facility_6)
+
+```
+#The solution for the this DMU does not give us an optimal solution.
+
+```{r}
+library(Benchmarking)
+```
+
+```{r}
+input <- matrix(c(150, 400, 320, 520, 350, 320, 0.2, 0.7, 1.2, 2.0, 1.2, 0.7), ncol = 2)
+colnames(input) <- c("Staff Hours per Day", "Supplies per Day")
+input
+```
+
+```{r}
+output <- matrix(c(14000, 14000, 42000, 28000, 19000, 14000, 3500, 21000,10500, 42000, 25000, 15000), ncol = 2)
+
+colnames(output) <- c("Reimbured Patient-Days", "Privately Paid Patient-Days")
+output
+```
+
+```{r}
+CRS_DMU <- dea(input,output, RTS = "crs")
+CRS_DMU
+```
+#Solution of the CRS of DMU.
+```{r}
+lambda(CRS_DMU)
+```
+The Lambda value of the CRS is as above.
+```{r}
+peers(CRS_DMU)
+```
+The peers of CRS is as above.
+```{r}
+FDH_DMU <- dea(input,output, RTS = "fdh")
+FDH_DMU
+```
+Solution of the FDH of DMU.
+```{r}
+peers(FDH_DMU)
+```
+The peers of FDH is as above.
+
+```{r}
+lambda(FDH_DMU)
+```
+The Lambda value of the FDH is as above
+```{r}
+VRS_DMU <- dea(input,output, RTS = "vrs")
+VRS_DMU
+```
+#Solution of the VRS of DMU.
+```{r}
+peers(VRS_DMU)
+```
+The peers of VRS is as above.
+```{r}
+lambda(VRS_DMU)
+```
+The Lambda value of the VRS is as above.
+```{r}
+IRS_DMU <- dea(input,output, RTS = "irs")
+IRS_DMU
+```
+#Solution of the IRS of DMU.
+```{r}
+peers(IRS_DMU)
+```
+The peers of IRS is as above.
+```{r}
+lambda(IRS_DMU)
+```
+The Lambda value of the IRS is as above.
+```{r}
+DRS_DMU <- dea(input,output, RTS = "drs")
+DRS_DMU
+```
+#Solution of the DRS of DMU.
+
+```{r}
+peers(DRS_DMU)
+```
+The peers of DRS is as above.
+```{r}
+lambda(DRS_DMU)
+```
+The Lambda value of the DRS is as above.
+```{r}
+FRH_DMU <- dea(input,output, RTS = "add")
+FRH_DMU
+```
+#Solution of the FRS of DMU.
+```{r}
+peers(FRH_DMU)
+```
+The peers of FRS is as above.
+```{r}
+lambda(FRH_DMU)
+```
+The Lambda value of the FRS is as above.
+#The tabular representation of the all DMU RTS.
+```{r}
+Col_Names <- c("", "FDH_DMU", "CRS_DMU", "VRS_DMU", "IRS_DMU", "DRS_DMU", "FRH_DMU")
+Row_Names <- c("Facility 1", "Facility 2", "Facility 3", "Facility 4", "Facility 5", "Facility 6")
+Tabular_Output <- as.data.frame(cbind(Row_Names, FDH_DMU$eff, CRS_DMU$eff, VRS_DMU$eff, IRS_DMU$eff, DRS_DMU$eff, FRH_DMU$eff))
+colnames(Tabular_Output)<- Col_Names
+Tabular_Output
+```
+Here, we can see that the DMU's CRS and DRS values are efficient, since they can give us the ideal solution for the DMU with the most accuracy. As a result, we can state that the CRS and DRS values can assist us in determining the DMU effectively.
+
+
+We obtained the same value by solving the DMU alone as we did by solving the CRS and the DRS.
+
+
+#<strong>Therefore, the Facilites 1, 2, 3 and 4 are the efficient facilities to go with as Facilites 5 and 6 are not so efficient.</strong>
+
+
+<hr>
+
+
+
+
+
+
+
+2.The Research and Development Division of the Emaxcorp Corporation has developed three new products. A decision now needs to be made on which mix of these products should be produced. Management wants primary consideration given to three factors: total profit, stability in the workforce, and achieving an increase in the company’s earnings 
+next year from the $75 million achieved this year. In particular, using the units given in the following table, they want to
+
+Maximize Z = P -6C -3D, where 
+
+P = total (discounted) profit over the life of the new products,
+
+C = change (in either direction) in the current level of employment,
+
+D = decrease (if any) in next year’s earnings from the current year’s level.
+
+The amount of any increase in earnings does not enter into Z, because management is concerned primarily with just achieving some increase to keep the stockholders happy. (It has mixed feelings about a large increase that then would be difficult to surpass in subsequent years.)
+
+The impact of each of the new products (per unit rate of production) on each of these factors is shown in the following table:
+
+![](K:\ANACONDA\R\QMM\qmm\QMM1\64018-ksharm11\QMM_ASSIGNMENT5\Capture2.PNG)
+
+Questions
+
+1)Define y1+and y1-, respectively, as the amount over (if any) and the amount under (if any) the employment level goal. Define y2+and y2-in the same way for the goal regarding earnings next year. Define x1, x2, and x3as the production rates of Products 1, 2, and 3, respectively. With these definitions, use the goal programming technique to express y1+, y1-, y2+and y2-algebraically in terms of x1, x2, and x3. Also express P in terms of x1, x2, and x3.
+
+2)Express management’s objective function in terms of x1, x2, x3, y1+, y1-, y2+and y2-.
+
+3)Formulate and solve the linear programming model. What are your findings?
+
+##solution:
+Let the Xi = the new proucts. i = 1, 2, 3.
+
+    y1 = Amount of employment level goal
+    y1 = y1p - y1m
+    y1p = amount over employment level goal
+    y1m = amount under employment level goal.
+    y2= earnings next year
+    y2p = earnings increase next year
+    y2m = earnings decrease next year
+
+    
+Hence,
+
+Max = P - 6C - 3D
+
+P = 20 x1 + 15 x2 + 25 x3 C = y1p - y1m D = y2p - y1m
+
+but increase can be ignored thus, D = y1m
+
+
+
+```{r}
+Emaxcorp <- read.lp("Emaxcorp.lp")
+
+solve(Emaxcorp)
+```
+
+```{r}
+get.objective(Emaxcorp)
+```
+
+```{r}
+get.constraints(Emaxcorp)
+
+```
+
+```{r}
+get.variables(Emaxcorp)
+
+```
+
+##Using the simplex method, we obtained at the best solution with the most profit, z = 225. Using x3 = 15 and x1 and x2 = 0, y1p = 25, y1m and y2m = 0. The number of employees has increased by 25 in hundreds.
+
+```{r}
+Emaxcorp <- read.lp("Emaxcorp_FirstStage.lp")
+
+solve(Emaxcorp)
+```
+
+```{r}
+get.objective(Emaxcorp)
+```
+
+```{r}
+get.constraints(Emaxcorp)
+
+```
+
+```{r}
+get.variables(Emaxcorp)
+
+```
+
+##Our initial aim is to maximize profit with z = 250, product 3 chosen x3 = 10, and earnings reduced by 25.
+
+```{r}
+Emaxcorp <- read.lp("Emaxcorp_SecondStage.lp")
+solve(Emaxcorp)
+```
+
+```{r}
+get.objective(Emaxcorp)
+```
+
+```{r}
+get.constraints(Emaxcorp)
+
+```
+
+```{r}
+get.variables(Emaxcorp)
+
+```
+
+##Our next profit target is z = 208.33, x2 = 8.3333, x3 = 3.3333, and no employee level changes.
+
+```{r}
+Emaxcorp <- read.lp("Emaxcorp_Streamline.lp")
+
+solve(Emaxcorp)
+```
+
+```{r}
+get.objective(Emaxcorp)
+```
+
+```{r}
+get.constraints(Emaxcorp)
+
+```
+
+```{r}
+get.variables(Emaxcorp)
+
+```
+
+##As a result, the total maximum profit will be 291.6667 million dollors. Product 3 is chosen with 11.666667 units, an increase in employment target leavel with 8.33333 employees, and a drop in earnings of 16.66667.
